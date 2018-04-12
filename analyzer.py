@@ -41,6 +41,15 @@ KEYWORDS = [
 
 pos_keys, neg_keys, extract= {}, {}, {}
 
+CHANGE_TEMPLATE = {
+            'keywords': None, 
+            'condition': None, 
+            'value': None,
+            'loop_condition': None,
+            'exception_type': None,
+            'raise_condition': None
+        }
+
 for item in KEYWORDS:
     pos_keys[item], neg_keys[item] = 0, 0
 
@@ -59,11 +68,28 @@ def plot_it(x, y):
 
 
 
+class File:
+    def __init__(self, **kwargs):
+        self.file_name = kwargs['file_name']
+        self.changes = kwargs['changes']
+
+class Changes:
+    def __init__(self, **kwargs):
+        self.keywords = kwargs['keyword']
+        self.condition = kwargs['condition']
+        self.value = kwargs['value']
+        self.loop_condition = kwargs['loop_condition']
+        self.exception_type = kwargs['exception_type']
+        self.raise_condition = kwargs['raise_condition']      
+
+
+
 class CodeAnalysis:
     """
         Class with different methods to analyze patch files. 
         args: [Patch lines] 
     """
+
     def __str__(self):
         print("<CodeAnalysis Object>")
     
@@ -91,11 +117,11 @@ class CodeAnalysis:
             print(traceback.format_exc())
 
     @staticmethod
-    def change_analyzer(diff_lines):
+    def diff_extract(diff_lines):
         try:
             """
                 Construct workable data structure.
-                Dict{"diff --git a/file b/file": [+,+,+,+,+,-,-,-,-,....]}
+                Dict{"diff --git a/file b/file": [ +, +, +, +, +, -, -, -, -, . . . .]}
             """
             key = 0
             state = False
@@ -109,7 +135,7 @@ class CodeAnalysis:
                     state = False
                 elif item.split(' ')[0] != 'diff' and state:
                     if item.split(' ')[0] in ['+', '-']:
-                        diff_blocks[key].append(item[:1] + item[1:].strip())
+                        diff_blocks[key].append(item[:1] + ' ' + item[1:].strip())
                     else:
                         pass
             return diff_blocks
@@ -118,12 +144,39 @@ class CodeAnalysis:
         except Exception:
             print(traceback.format_exc())
 
+    
+    
+    @staticmethod
+    def change_analyzer(diff_extract):
+        '''
+            Method to extract changes and generate a JSON.
+        '''
+        global CHANGE_TEMPLATE
+        try:
+            for _file in diff_extract:
+                for diff in diff_extract[_file]:
+                    if len(diff_extract[_file][diff]):
+                        for line in diff_extract[_file][diff]:
+                            if len(line.split()[1:]) > 1 :
+                                if line.split()[1] == 'if':
+                                    CHANGE_TEMPLATE = CHANGE_TEMPLATE.fromkeys(list(CHANGE_TEMPLATE.keys()), None)
+                                    temp = line[1:].strip().replace('and', '|').replace('or', '|').split('|')
+                                    for item in temp:
+                                        match_object = re.match(r'([elif]+)\s+(.+)([\<\>\=\!]*)(is|)(not|)(.*):', item)
+                                        if match_object:
+                                            groups = match_object.groups()
+                            else:
+                                pass
+
+        except Exception:
+            print(traceback.format_exc())
+
 
 if __name__ == "__main__":
     try:
         metric_dict = {}
-        l = os.listdir(os.chdir('PR_DATA/'))
-        bar = ChargingBar("\033[1;33mProgress\033[1;m", max = len(l))
+        l = os.listdir(os.chdir('PR_DATA/'))[:100]
+        # bar = ChargingBar("\033[1;33mProgress\033[1;m", max = len(l))
         curr_time = time.time()
         
         '''Change Analysis.'''
@@ -131,10 +184,16 @@ if __name__ == "__main__":
         for item in l:
             f = open(item)
             blob = f.read().split('\n')
-            ext = CodeAnalysis.change_analyzer(blob)
-            extract[item] = ext
-            bar.next()
-        bar.finish()
+            ext = CodeAnalysis.diff_extract(blob)
+            if ext and list(ext.values()):
+                # print(ext)
+                extract[item] = ext
+            else:
+                pass
+            # bar.next()
+        # bar.finish()
+
+        CodeAnalysis.change_analyzer(extract)
 
         try:
             f = open('extract.json', 'w')
@@ -144,6 +203,7 @@ if __name__ == "__main__":
 
         try:
             f.write(json.dumps(extract))
+            print("\033[1;33mFinished.\033[1;m")
             #   
         except Exception:
             print(traceback.format_exc())
