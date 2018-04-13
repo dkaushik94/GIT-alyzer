@@ -3,9 +3,9 @@
     Script to analyze patch files and analyze what changes were made.
 """
 import os, sys, traceback, requests
-import pygal
+# import pygal
 import numpy as np
-from progress.bar import Bar
+# from progress.bar import Bar
 import time
 import re
 
@@ -70,37 +70,52 @@ def analyzer(patlines):
     except Exception:
         print(traceback.format_exc())
 
+
+resultDict = {'LopR':0,'Lop!R':0,'L!opR':0,'L!op!R':0,'!LopR':0,'!Lop!R':0,'!L!opR':0,'!L!op!R':0}
+result_lookup_dict = {'111':'LopR','110':'Lop!R','101':'L!opR','100':'L!op!R','011':'!LopR','010':'!Lop!R','001':'!L!opR','000':'!L!op!R'}
+
 def analyze_if(patlines):
-    if_regex = re.compile('if(.*(>|<|<=|>=|!=|==).*):')
+    
+    pat_lines = []
+    
+    for line in patlines:
+        line = line.replace('\'','').replace('\"','')
+        pat_lines.append(line)
+    
+    patlines = pat_lines
+
+    new_patlines = []
+    if_regex = re.compile('if.*(>|<|<=|>=|!=|==).*:')
     num_lines_with_if = 0
     for line in patlines:
-        line = line.replace('+','')
-        line = line.replace('-','')
-        if(if_regex.match(line.replace(' ',''))):
+        nline = line.replace('+','').replace('-','')
+        if(if_regex.match(nline.strip())):
+            new_patlines.append(line.strip())
             num_lines_with_if = num_lines_with_if + 1
     if(num_lines_with_if <=1):
         print("not enough lines with if")
         return
     
     lineDict = {}
-    resultDict = {'LopR':0,'Lop!R':0,'L!opR':0,'L!op!R':0,'!LopR':0,'!Lop!R':0,'!L!opR':0,'!L!op!R':0}
-    result_lookup_dict = {'111':'LopR','110':'Lop!R','101':'L!opR','100':'L!op!R','011':'!LopR','010':'!Lop!R','001':'!L!opR','000':'!L!op!R'}
+    
     newLines = []
-    for line in patlines:
-        newline = line[1:].replace(" ","")
-        lineDict[newline] = {'sign':line[0]}
-        newLines.append(newline)
+    for line in new_patlines:
+        newline = line[1:]
+        lineDict[newline.strip()] = {'sign':line[0]}
+        print(line[0])
+        newLines.append(newline.strip())
     patlines = newLines
     if(patlines == []):
         print("0 lines with if")
         return
     
-    comps = ['==','>','<','>=','<=','!=']
+    comps = ['==','>=','<=','!=','>','<',]
     for line in lineDict.keys():
         for op in comps:
             if(line.find(op) != -1):
                 lineDict[line]['op_loc'] = line.find(op)
                 lineDict[line]['op'] = op
+                break
 
     pLines = []
     nLines = []
@@ -162,7 +177,7 @@ def analyze_if(patlines):
                     print(pLine + " and " + nLine + " has different RHS evaluating parameter")
             pat_cond = result_lookup_dict[res_pat]
             resultDict[pat_cond] = resultDict[pat_cond] + 1
-    print(resultDict)
+    # print(resultDict)
 
 
 
@@ -171,27 +186,33 @@ if __name__ == "__main__":
     try:
         metric_dict = {}
         l = os.listdir(os.chdir('PR_DATA/'))
-        bar = Bar("Progress", max = len(l))
+        # bar = Bar("Progress", max = len(l))
         curr_time = time.time()
         i = 0
         for item in l:
-            # if(i>50):
-            #     break
+            if(i>60):
+                break
+            print("\033[1;033mAnalyzing:\033[1;m\n", item)
             f = open(item)
+            # if('1796645' not in item):
+            #     continue
             blob = f.read().split('\n')
             patlines = []
             for item2 in blob:
                 if item2.split(' ')[0] in ['+', '-']:
                     patlines.append(item2)
-            print("\033[1;033mAnalyzing:\033[1;m\n", item)
+            
             # analyzer(patlines)
+            # if('1796645' not in item):
+            #     continue
             analyze_if(patlines)
-            bar.next()
-            # i = i+1
+            # bar.next()
+            i = i+1
         print("\nTime Elapsed:", (time.time() - curr_time)/60, 'mins')
-        bar.finish()
+        # bar.finish()
         # print("\033[1;35mPostive Keys:\033[1;m\n", pos_keys)
         # print("\033[1;35mNegative Keys:\033[1;m\n", neg_keys)
+        print(resultDict)
 
         # plotit(pos_keys, neg_keys)
 
