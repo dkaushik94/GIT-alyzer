@@ -35,20 +35,21 @@ KEYWORDS = [
         'finally',
         'del',
         'assert',
-        'break',
-        'raise'
+        'break'
     ]
 
 pos_keys, neg_keys, extract= {}, {}, {}
-
+PATCH_DUMP = []
 CHANGE_TEMPLATE = {
+            'action': None,
             'keywords': None, 
             'condition': None, 
             'value': None,
-            'loop_condition': None,
+            'loop_entity': None,
             'exception_type': None,
             'raise_condition': None
         }
+
 
 for item in KEYWORDS:
     pos_keys[item], neg_keys[item] = 0, 0
@@ -74,15 +75,15 @@ class File:
         self.changes = kwargs['changes']
 
 class Changes:
-    def __init__(self, **kwargs):
-        self.keywords = kwargs['keyword']
-        self.condition = kwargs['condition']
-        self.value = kwargs['value']
-        self.loop_condition = kwargs['loop_condition']
-        self.exception_type = kwargs['exception_type']
-        self.raise_condition = kwargs['raise_condition']      
-
-
+    def __init__(self, args):
+        self.action = args['action']
+        self.keyword = args['keyword']
+        self.conditions = args['condition']
+        self.value = args['value']
+        self.loop_entity = args['loop_entity']
+        self.exception_type = args['exception_type']
+        self.raise_condition = args['raise_condition'] 
+   
 
 class CodeAnalysis:
     """
@@ -139,11 +140,22 @@ class CodeAnalysis:
                     else:
                         pass
             return diff_blocks
-            
-     
         except Exception:
             print(traceback.format_exc())
 
+
+
+    @staticmethod
+    def DumpGenerator(file_name, change_dict):
+        try:
+            global CHANGE_TEMPLATE
+            CHANGE_TEMPLATE = CHANGE_TEMPLATE.fromkeys(list(CHANGE_TEMPLATE.keys()), None)
+            for item in change_dict:
+                CHANGE_TEMPLATE[item] = change_dict[item]
+            ch = Changes(CHANGE_TEMPLATE)
+            return ch.__dict__
+        except Exception:
+            print(traceback.format_exc())
     
     
     @staticmethod
@@ -151,23 +163,110 @@ class CodeAnalysis:
         '''
             Method to extract changes and generate a JSON.
         '''
-        global CHANGE_TEMPLATE
         try:
+            global PATCH_DUMP
             for _file in diff_extract:
+                dump = []
                 for diff in diff_extract[_file]:
                     if len(diff_extract[_file][diff]):
                         for line in diff_extract[_file][diff]:
                             if len(line.split()[1:]) > 1 :
-                                if line.split()[1] == 'if':
-                                    CHANGE_TEMPLATE = CHANGE_TEMPLATE.fromkeys(list(CHANGE_TEMPLATE.keys()), None)
-                                    temp = line[1:].strip().replace('and', '|').replace('or', '|').split('|')
-                                    for item in temp:
-                                        match_object = re.match(r'([elif]+)\s+(.+)([\<\>\=\!]*)(is|)(not|)(.*):', item)
-                                        if match_object:
-                                            groups = match_object.groups()
+                                '''Conditional Statements.'''
+                                keyword = line.split()[1]
+                                if keyword == 'if' or keyword == 'elif':
+                                    # CHANGE_TEMPLATE = CHANGE_TEMPLATE.fromkeys(list(CHANGE_TEMPLATE.keys()), None)
+                                    # print(line[1:].strip())
+                                    match_object = re.match(r'([elif]+)\s*(.*)]:', line[1:].strip()) 
+                                    if match_object:
+                                        groups = match_object.groups()
+                                        temp = {}
+                                        if line.split()[0] == '+':
+                                            temp['action'] = 'added'
+                                        elif line.split()[0] == '-':
+                                            temp['action'] = 'removed'
+                                        temp['keyword'] = groups[0]
+                                        temp['condition'] = groups[1]
+                                        dump.append(CodeAnalysis.DumpGenerator(_file ,temp))
+                                elif keyword == 'for':
+                                    match_object = re.match(r'for\s*(.*)\s*in\s*(.*):', line[1:].strip())
+                                    if match_object:
+                                        groups = match_object.groups()
+                                        temp = {}
+                                        if line.split()[0] == '+':
+                                            temp['action'] = 'added'
+                                        elif line.split()[0] == '-':
+                                            temp['action'] = 'removed'
+                                        temp['keyword'] = 'for'
+                                        temp['loop_entity'] = groups[1]
+                                        temp['value'] = groups[0] 
+                                        dump.append(CodeAnalysis.DumpGenerator(_file ,temp))
+                                elif keyword == 'while':
+                                    match_object = re.match(r'while\s*(.*):', line[1:].strip())
+                                    if match_object:
+                                        groups = match_object.groups()
+                                        temp = {}
+                                        if line.split()[0] == '+':
+                                            temp['action'] = 'added'
+                                        elif line.split()[0] == '-':
+                                            temp['action'] = 'removed'
+                                        temp['keyword'] = 'while'
+                                        temp['condition'] = groups[0] 
+                                        dump.append(CodeAnalysis.DumpGenerator(_file ,temp))
+                                elif keyword == 'except':
+                                    match_object = re.match(r'except\s*([a-zA-Z0-9,.\s]+)\s*.*:', line[1:].strip())
+                                    if len(line[1:].strip().replace(':', '').split()) == 1:
+                                        exception_conditions = 'general'
+                                    else:
+                                        exception_conditions = line[1:].strip().replace(':', '').split()[1]
+                                    if match_object:
+                                        groups = match_object.groups()
+                                        temp = {}
+                                        if line.split()[0] == '+':
+                                            temp['action'] = 'added'
+                                        elif line.split()[0] == '-':
+                                            temp['action'] = 'removed'
+                                        temp['keyword'] = 'except'
+                                        temp['exception_type'] = exception_conditions 
+                                        dump.append(CodeAnalysis.DumpGenerator(_file ,temp))
+                                elif keyword == 'raise':
+                                    raise_conditions = line[1:].strip().replace(':', '').split()[1]
+                                    temp = {}
+                                    if line.split()[0] == '+':
+                                        temp['action'] = 'added'
+                                    elif line.split()[0] == '-':
+                                        temp['action'] = 'removed'
+                                    temp['keyword'] = 'raise'
+                                    temp['raise_condition'] = raise_conditions 
+                                    dump.append(CodeAnalysis.DumpGenerator(_file ,temp))
+                                elif keyword == 'import':
+                                    import_statement = line[1:].strip().replace(':', '').split()[1]
+                                    temp = {}
+                                    if line.split()[0] == '+':
+                                        temp['action'] = 'added'
+                                    elif line.split()[0] == '-':
+                                        temp['action'] = 'removed'
+                                    temp['keyword'] = 'import'
+                                    temp['value'] = import_statement 
+                                    dump.append(CodeAnalysis.DumpGenerator(_file ,temp))
                             else:
                                 pass
+                if dump:
+                    fl = File(file_name = _file, changes = dump)
+                    PATCH_DUMP.append(fl.__dict__)
+                else:
+                    dump = []
+                    pass
+            try:
+                f = open('../extract.json', 'w')
+            except Exception:
+                os.system('touch ../extract.json')
+                f = open('../extract.json', 'w')
 
+            try:
+                f.write(json.dumps(PATCH_DUMP))
+                print("\033[1;33m..Dumped\033[1;m")
+            except Exception:
+                print(traceback.format_exc())            
         except Exception:
             print(traceback.format_exc())
 
@@ -175,8 +274,8 @@ class CodeAnalysis:
 if __name__ == "__main__":
     try:
         metric_dict = {}
-        l = os.listdir(os.chdir('PR_DATA/'))[:100]
-        # bar = ChargingBar("\033[1;33mProgress\033[1;m", max = len(l))
+        l = os.listdir(os.chdir('PR_DATA/'))
+        bar = ChargingBar("\033[1;33mProgress\033[1;m", max = len(l))
         curr_time = time.time()
         
         '''Change Analysis.'''
@@ -186,12 +285,11 @@ if __name__ == "__main__":
             blob = f.read().split('\n')
             ext = CodeAnalysis.diff_extract(blob)
             if ext and list(ext.values()):
-                # print(ext)
                 extract[item] = ext
             else:
                 pass
-            # bar.next()
-        # bar.finish()
+            bar.next()
+        bar.finish()
 
         CodeAnalysis.change_analyzer(extract)
 

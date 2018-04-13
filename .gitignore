@@ -1,2 +1,4 @@
 *.txt
 PR_DATA
+*.json
+*.csv
