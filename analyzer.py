@@ -51,10 +51,10 @@ KEYWORDS = [
 pos_keys, neg_keys, extract= {}, {}, {}
 PATCH_DUMP = []
 CHANGE_TEMPLATE = {
+            'value': None,
             'action': None,
             'keywords': None, 
             'condition': None, 
-            'value': None,
             'loop_entity': None,
             'exception_type': None,
             'raise_condition': None
@@ -66,6 +66,7 @@ for item in KEYWORDS:
 
 #Function to plot the values.
 def plot_it(x, y, repo_name='no_name'):
+    # x: Added keys, y: Removed keys.
     try:
         bar_chart = pygal.Bar()
         bar_chart.title = "Repository patch analysis"
