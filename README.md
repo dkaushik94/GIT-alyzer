@@ -21,7 +21,7 @@ The reports are *.svg* files and can be opened with a browser or any 3rd part ap
 
 ## Flow Diagram:
 
-![Flow Diagram](https://bitbucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/raw/cf3c892aae0b51b5e255a0e40fd9697cb8a848a6/readme_images/analyzer_flow.jpeg)
+![Flow Diagram](https://bitbucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/raw/0a1c895eaf61d6afe5a38d9de452eea573f50689/readme_images/analyzer_flow.svg)
 
 Example output graph:
 ![Frequency analysis](https://bitbucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/raw/7d0f5c85485d305e67a7658ba89e9349c5732305/readme_images/graph.png)
