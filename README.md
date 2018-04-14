@@ -17,7 +17,7 @@ The reports are *.svg* files and can be opened with a browser or any 3rd part ap
 
 Flow Diagram:
 
-![Flow Diagram](./readme_images/analyzer_flow.svg)
+![Flow Diagram](https://bitbucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/src/master/readme_images/analyzer_flow.jpeg)
 
 ### Dependencies:
 Before running any of the above commands, run <br>
