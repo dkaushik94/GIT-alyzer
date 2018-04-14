@@ -390,7 +390,7 @@ class CodeAnalysis:
 
             try:
                 f.write(json.dumps(PATCH_DUMP))
-                print("\033[1;33m...JSON dumped!\033[1;m")
+                print("\033[1;32m...JSON dumped!\033[1;m")
             except Exception:
                 print(traceback.format_exc())
 
