@@ -1,5 +1,6 @@
-*.txt
+
 PR_DATA
 *.json
 *.svg
 *.csv
+./venv*

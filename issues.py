@@ -28,10 +28,7 @@ try:
 except ImportError:
     os.system('pip3 install requests')
 
-try:
-    import git
-except ImportError:
-    os.system('pip3 install git')
+
 
 try:
     import csv
@@ -41,7 +38,7 @@ except ImportError:
 
 import requests
 import csv
-import git
+
 try:
     from progress.bar import ChargingBar
 except ImportError:
@@ -77,8 +74,8 @@ def get_repos(username,password):
                     os.mkdir(repo['name'])
                 
                 os.chdir(repo['name'])
-                # We are paginating only 8 pages of pull requests per repository. 
-                for i in range(0,8):
+                # We are paginating only first 15 pages of pull requests per repository. 
+                for i in range(0,15):
                     prs_url = 'https://api.github.com/repos/'+repo['owner']['login']+"/"+repo['name']+"/"+'pulls?state=closed&page='+str(i)
                     pr_json = requests.get(prs_url, auth=(username,password))
                     if(pr_json.json() == []):
@@ -113,9 +110,6 @@ def validate_password(pwd):
         return False
     else:
         return True
-
-
-
 
 # Checks if the network connection is working
 def internet_on():

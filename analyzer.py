@@ -2,7 +2,13 @@
     Written by Debojit Kaushik (1st April 2018)
     Script to analyze patch files and analyze what changes were made.
 """
-import os, sys, traceback, requests, time, re, json
+import os, sys, traceback, time, re, json
+try:
+    import requests
+except ImportError:
+    print("Missing Dependency! Installing requests..")
+    os.system('pip3 install requests')
+    import requests
 try:
     import numpy as np
 except ImportError:
@@ -12,10 +18,12 @@ try:
     import pygal
 except Exception:
     os.system('sudo pip3 install pygal')
+    import pygal
 try:
     from progress.bar import ChargingBar
 except ImportError:
     os.system('sudo pip3 install progress')
+    import ChargingBar
 except Exception:
     print(traceback.format_exc())
 
@@ -64,7 +72,7 @@ def plot_it(x, y, repo_name='no_name'):
         bar_chart.x_labels = list(x.keys())
         bar_chart.add("Additions", list(x.values()))
         bar_chart.add("Deletions", list(y.values()))
-        file_name = '../' + repo_name + '_analysis.svg'
+        file_name = './' + repo_name + '_analysis.svg'
         bar_chart.render_to_file(file_name)
         return file_name
     except Exception:
@@ -86,7 +94,7 @@ def plot_repo_analysis(result_dict,repo):
         bar_chart.title = "If pattern analysis"
         bar_chart.x_labels = patterns
         bar_chart.add("If Patterns", list(result_dict.values()))
-        bar_chart.render_to_file('../if_analysis_'+repo+'.svg')
+        bar_chart.render_to_file('./if_analysis_'+repo+'.svg')
     except Exception:
         print(traceback.format_exc())
 
