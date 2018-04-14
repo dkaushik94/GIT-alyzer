@@ -21,6 +21,9 @@ The reports are *.svg* files and can be opened with a browser or any 3rd part ap
 
 ![Flow Diagram](https://bitbucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/raw/cf3c892aae0b51b5e255a0e40fd9697cb8a848a6/readme_images/analyzer_flow.jpeg)
 
+Example output graph:
+![Frequency analysis](https://bitbucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/raw/cf3c892aae0b51b5e255a0e40fd9697cb8a848a6/readme_images/analyzer_flow.jpeg)
+
 * * *
 
 ### Dependencies:
@@ -37,9 +40,9 @@ Create a virtual environement run:
 * * *
 
 ### Developers:
-- Debojit Kaushik
-  * E-mail: dkaush4@uic.edu  
-  * [Github](https://www.github.com/dkaushik94)
-- Sandeep Joshi
-  - E-Mail: sjoshi37@uic.edu
-  - [Github](https://www.github.com/sandeepjoshi1910)
+* Debojit Kaushik
+    * E-mail: dkaush4@uic.edu
+    * [Github](https://www.github.com/dkaushik94)
+* Sandeep Joshi
+    * E-Mail: sjoshi37@uic.edu
+    * [Github](https://www.github.com/sandeepjoshi1910)
