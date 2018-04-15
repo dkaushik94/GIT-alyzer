@@ -101,7 +101,7 @@ if    changed_LHS  (operator_change)    changed_RHS:
 
 For each repository, the frequency of each of the pattern is accumulated and plotted into a bar chart.
 
-![if_pattern_analysis](https://bytebucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/raw/22a987492abc96b71a024d6e1796886ec3d3731c/readme_images/if_analysis_httpie.svg)
+![if_pattern_analysis](https://bitbucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/raw/cfc83ef6ee77a265f44c813a88af7daa937432c7/readme_images/id_checker.png)
 
 
 # Limitations
