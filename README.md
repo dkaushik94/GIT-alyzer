@@ -109,15 +109,16 @@ For each repository, the frequency of each of the pattern is accumulated and plo
 `change_analyzer` takes into context what is the current keyword of the line. After doing this it extract respective properties from the line and stores it into a hashmap to construct the extracted sugar. 
 
 For example:
-    *if/elif* are the keywords,
-    clauses following these are the new conditions that are being written in the patch file. 
-    *for* is the keyword,
-    value from this is the varialbe following for, and after 'in' is the range of the loop that has been introduced.
-    And so on, this method analyses over predefined keywords.
+>*if/elif* are the keywords,clauses following these are the new conditions that are >being written in the patch file. 
 
-## frequency Analysis
+>*for* is the keyword,
+>   value from this is the varialbe following for, and after 'in' is the range of the loop that has been introduced.
+    
+And so on, this method analyses over predefined keywords.
 
-`frequency_analyser` is a naive method which analyses over many patch files (preferably thousands) to extract highest used syntax keywords in patches. It does this by detecting keywords, and storing how manuy time that keyword was introduced or removed.
+## Frequency Analysis
+
+`frequency_analyzer` is a naive method which analyses over many patch files (preferably thousands) to extract highest used syntax keywords in patches. It does this by detecting keywords, and storing how manuy time that keyword was introduced or removed.
 
 # Limitations
 
