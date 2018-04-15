@@ -46,6 +46,7 @@ except ImportError:
 
 no_repos_to_analyze = 5
 no_pages_to_analyze = 1
+num_paginate = 10
 
 GITHUB_REPOS = 'https://api.github.com/search/repositories?q=language:python&page='
 GITHUB_COMMIT_LIST = 'https://api.github.com/repos/'
@@ -67,15 +68,15 @@ def get_repos(username,password):
             for repo in repos:
                 if(no_of_repos_processed >= int(no_repos_to_analyze)):
                     break
-                bar = ChargingBar("\033[1;33mProgress\033[1;m", max = 450)
-                print('Downloading patch files for the REPO - ' + repo['name'])
+                bar = ChargingBar("\033[1;33mProgress\033[1;m", max = int(num_paginate)*30)
+                print('Downloading patch files for the REPO - ','\033[1;32m' , repo['name'], '\033[1;m')
                 
                 if repo['name'] not in os.listdir():
                     os.mkdir(repo['name'])
                 
                 os.chdir(repo['name'])
                 # We are paginating only first 15 pages of pull requests per repository. 
-                for i in range(0,15):
+                for i in range(0,int(num_paginate)):
                     prs_url = 'https://api.github.com/repos/'+repo['owner']['login']+"/"+repo['name']+"/"+'pulls?state=closed&page='+str(i)
                     pr_json = requests.get(prs_url, auth=(username,password))
                     if(pr_json.json() == []):
@@ -162,6 +163,9 @@ else:
 
 # incremneting jsut for the sake of looping
 no_pages_to_analyze = no_pages_to_analyze + 1
+
+num_paginate = input('\033[1;033mPlease Enter the number of pages of pull requests you want to paginate\033[1;m\n')
+
 
 get_repos(username,password)
 
