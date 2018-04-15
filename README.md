@@ -43,20 +43,8 @@ After the env is created, to change working source, run:
 
 This will initiate the working environment.
 
-*Note: This repository is a part of the CS540 Advanced Techniques in Software Engineering course imparted by Dr. Mark Grechanik at the University of Illinois at Chicago.*
 
 * * *
-
-### Developers:
-
-* Debojit Kaushik
-    * E-mail: dkaush4@uic.edu
-    * [Github](https://www.github.com/dkaushik94)
-* Sandeep Joshi
-    * E-Mail: sjoshi37@uic.edu
-    * [Github](https://www.github.com/sandeepjoshi1910)
-
-
 
 # How it works
 
@@ -120,6 +108,8 @@ And so on, this method analyses over predefined keywords.
 
 `frequency_analyzer` is a naive method which analyses over many patch files (preferably thousands) to extract highest used syntax keywords in patches. It does this by detecting keywords, and storing how manuy time that keyword was introduced or removed.
 
+* * *
+
 # Limitations
 
 - If analysis module is naive. For example, an if statement like this - `if x > 10 and y != 34`, the part `10 and y != 34` is considered as RHS. So a specific change like `y == 34` will be considered as a change in the entire RHS. This affects the insight otherwise we would've been able to obtain. Also we are comparing each addition line with each removal line. This might not reflect the actual scenario. But we're doing this as we're unsure of which additon corresponds to which deletion. This is the reason you might see a high number in the frequency of the last case listed above. 
@@ -130,4 +120,28 @@ And so on, this method analyses over predefined keywords.
 
 - Since we're performing complex string operations, the code can run slowly at times. The code sometimes runs with complexity in the order of O(n^4). When we have huge data (around 2.5 GB of patch files), we have noticed considerable amount of time being taken to analyze the patch files.
 
-- CodeAnalysis class methods dont take into account the context of the code. Whether the same line was modified or the current line is a new line. This reduces the value of the analysis of the reports. It would be great if some correlation coudl be found which would give us a deeper insight into the patch fixes and what they tend to do. 
+- CodeAnalysis class methods dont take into account the context of the code. Whether the same line was modified or the current line is a new line. This reduces the value of the analysis of the reports. It would be great if some correlation coudl be found which would give us a deeper insight into the patch fixes and what they tend to do.
+
+* * *
+
+### Developers:
+
+* Debojit Kaushik
+    * E-mail: dkaush4@uic.edu
+    * [Github](https://www.github.com/dkaushik94)
+* Sandeep Joshi
+    * E-Mail: sjoshi37@uic.edu
+    * [Github](https://www.github.com/sandeepjoshi1910) 
+
+*Note: This repository is a part of the CS540 Advanced Techniques in Software Engineering course imparted by Dr. Mark Grechanik at the University of Illinois at Chicago.*
+
+# References
+
+- Github REST API & documentation
+- StackOverflow posts alot of it
+- Python Documentation
+- Regex101.com
+- JSONPretty Print to better see large JSON objects
+- PyGal
+- PyPI
+- .*
