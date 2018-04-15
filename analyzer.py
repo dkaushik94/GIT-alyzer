@@ -394,10 +394,10 @@ class CodeAnalysis:
             #Dump JSON into file. If file exists then open and dump,
             #If file doesn't exist create file and dump JSON after opening it. 
             try:
-                f = open('../extract.json', 'w')
+                f = open('extract.json', 'w')
             except Exception:
-                os.system('touch ../extract.json')
-                f = open('../extract.json', 'w')
+                os.system('touch extract.json')
+                f = open('extract.json', 'w')
 
             try:
                 f.write(json.dumps(PATCH_DUMP))
@@ -406,7 +406,7 @@ class CodeAnalysis:
                 print(traceback.format_exc())
 
         except AssertionError:
-            print('Bad Parameters. Please check parameters.')
+            print('\nBad Parameters. Please check parameters.')
         except Exception:
             print(traceback.format_exc())
 
