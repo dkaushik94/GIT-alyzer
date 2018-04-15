@@ -67,7 +67,7 @@ def get_repos(username,password):
             for repo in repos:
                 if(no_of_repos_processed >= int(no_repos_to_analyze)):
                     break
-                bar = ChargingBar("\033[1;33mProgress\033[1;m", max = 225)
+                bar = ChargingBar("\033[1;33mProgress\033[1;m", max = 450)
                 print('Downloading patch files for the REPO - ' + repo['name'])
                 
                 if repo['name'] not in os.listdir():
@@ -80,6 +80,7 @@ def get_repos(username,password):
                     pr_json = requests.get(prs_url, auth=(username,password))
                     if(pr_json.json() == []):
                         break
+                    print(len(pr_json.json()))
                     for pr in pr_json.json():
                         if 'issue_url' in pr:
                             file = str(pr['id'])+'.txt'
