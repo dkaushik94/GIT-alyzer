@@ -104,6 +104,21 @@ For each repository, the frequency of each of the pattern is accumulated and plo
 ![if_pattern_analysis](https://bitbucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/raw/cfc83ef6ee77a265f44c813a88af7daa937432c7/readme_images/id_checker.png)
 
 
+## Change Analysis
+
+`change_analyzer` takes into context what is the current keyword of the line. After doing this it extract respective properties from the line and stores it into a hashmap to construct the extracted sugar. 
+
+For example:
+    *if/elif* are the keywords,
+    clauses following these are the new conditions that are being written in the patch file. 
+    *for* is the keyword,
+    value from this is the varialbe following for, and after 'in' is the range of the loop that has been introduced.
+    And so on, this method analyses over predefined keywords.
+
+## frequency Analysis
+
+`frequency_analyser` is a naive method which analyses over many patch files (preferably thousands) to extract highest used syntax keywords in patches. It does this by detecting keywords, and storing how manuy time that keyword was introduced or removed.
+
 # Limitations
 
 - If analysis module is naive. For example, an if statement like this - `if x > 10 and y != 34`, the part `10 and y != 34` is considered as RHS. So a specific change like `y == 34` will be considered as a change in the entire RHS. This affects the insight otherwise we would've been able to obtain. Also we are comparing each addition line with each removal line. This might not reflect the actual scenario. But we're doing this as we're unsure of which additon corresponds to which deletion. This is the reason you might see a high number in the frequency of the last case listed above. 
@@ -113,3 +128,5 @@ For each repository, the frequency of each of the pattern is accumulated and plo
 - In the If analysis module, sometimes there are just not enough data to find patterns in the patch files. We paginated around 15 pages of pull requests to get enough data. Some repositories doesn't have data specific to the if analysis pattern.
 
 - Since we're performing complex string operations, the code can run slowly at times. The code sometimes runs with complexity in the order of O(n^4). When we have huge data (around 2.5 GB of patch files), we have noticed considerable amount of time being taken to analyze the patch files.
+
+- CodeAnalysis class methods dont take into account the context of the code. Whether the same line was modified or the current line is a new line. This reduces the value of the analysis of the reports. It would be great if some correlation coudl be found which would give us a deeper insight into the patch fixes and what they tend to do. 
