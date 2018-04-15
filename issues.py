@@ -67,7 +67,7 @@ def get_repos(username,password):
             for repo in repos:
                 if(no_of_repos_processed >= int(no_repos_to_analyze)):
                     break
-                bar = ChargingBar("\033[1;33mProgress\033[1;m", max = 120)
+                bar = ChargingBar("\033[1;33mProgress\033[1;m", max = 225)
                 print('Downloading patch files for the REPO - ' + repo['name'])
                 
                 if repo['name'] not in os.listdir():

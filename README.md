@@ -106,5 +106,10 @@ For each repository, the frequency of each of the pattern is accumulated and plo
 
 # Limitations
 
-- If analysis module is naive. For example, an if statement like this - `if x > 10 and y != 34`, the part `10 and y != 34` is considered as RHS. So a specific change like `y == 34` will be considered as a change in the entire RHS. This affects the insight otherwise we would've been able to obtain. 
+- If analysis module is naive. For example, an if statement like this - `if x > 10 and y != 34`, the part `10 and y != 34` is considered as RHS. So a specific change like `y == 34` will be considered as a change in the entire RHS. This affects the insight otherwise we would've been able to obtain. Also we are comparing each addition line with each removal line. This might not reflect the actual scenario. But we're doing this as we're unsure of which additon corresponds to which deletion. This is the reason you might see a high number in the frequency of the last case listed above. 
 
+- In finding patterns either in `if` or  `while` and `for` turned out harder than we imagined. Regex helps us to find patterns in the code but we couldn't use regex to find recursive pattens in code which made us to adapt our code to build a naive soultion. Patterns line `if (num_products > 10 and y < x.get_productId()) or (inventory_size < 4578 and lost_inventory > 2347):` are very hard to detect using regex. Also, once we even find these patterns, the possible combinations are exhaustive.
+
+- In the If analysis module, sometimes there are just not enough data to find patterns in the patch files. We paginated around 15 pages of pull requests to get enough data. Some repositories doesn't have data specific to the if analysis pattern.
+
+- Since we're performing complex string operations, the code can run slowly at times. The code sometimes runs with complexity in the order of O(n^4). When we have huge data (around 2.5 GB of patch files), we have noticed considerable amount of time being taken to analyze the patch files.
