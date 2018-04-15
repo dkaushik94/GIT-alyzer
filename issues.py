@@ -80,7 +80,7 @@ def get_repos(username,password):
                     pr_json = requests.get(prs_url, auth=(username,password))
                     if(pr_json.json() == []):
                         break
-                    print(len(pr_json.json()))
+                  
                     for pr in pr_json.json():
                         if 'issue_url' in pr:
                             file = str(pr['id'])+'.txt'
