@@ -1,0 +1,27 @@
+From 7d4cf94099f74c1cd85eab9ca0ea716bf421a1e2 Mon Sep 17 00:00:00 2001
+From: TJ <tjadanel@users.noreply.github.com>
+Date: Sat, 30 Dec 2017 21:18:49 -0500
+Subject: [PATCH] Updated Date and Time to add Maya
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Maya: Datetimes for Humans™
+https://travis-ci.org/kennethreitz/maya.svg?branch=master
+Datetimes are very frustrating to work with in Python, especially when dealing with different locales on different systems. This library exists to make the simple things much easier, while admitting that time is an illusion (timezones doubly so).
+---
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/README.md b/README.md
+index c0b3d74e..98829781 100644
+--- a/README.md
++++ b/README.md
+@@ -407,6 +407,7 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+ * [PyTime](https://github.com/shinux/PyTime) - A easy-use Python module which aims to operate date/time/datetime by string.
+ * [pytz](https://launchpad.net/pytz) - World timezone definitions, modern and historical. Brings the [tz database](https://en.wikipedia.org/wiki/Tz_database) into Python.
+ * [when.py](https://github.com/dirn/When.py) - Providing user-friendly functions to help perform common date and time actions.
++* [maya](https://github.com/kennethreitz/maya) - Datetimes for Humans, Maya is mostly built around the headaches and use-cases around parsing datetime data from websites.
+ 
+ ## Debugging Tools
+ 

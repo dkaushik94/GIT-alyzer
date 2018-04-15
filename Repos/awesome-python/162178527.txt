@@ -1,0 +1,21 @@
+From 2aa30692ac56c39e9e798dc63e9ed3e8acc82366 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?L=C3=ADki=C3=B0=20Geimfari?= <likid.geimfari@gmail.com>
+Date: Wed, 10 Jan 2018 20:00:19 +0300
+Subject: [PATCH] Update README.md
+
+---
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/README.md b/README.md
+index e21fcb5f..7e788ffa 100644
+--- a/README.md
++++ b/README.md
+@@ -1301,6 +1301,7 @@ List of lists.
+ 
+ * Monty
+     * [awesome](https://github.com/sindresorhus/awesome)
++    * [awesomo](https://github.com/lk-geimfari/awesomo)
+     * [lists](https://github.com/jnv/lists)
+ * Python
+     * [pycrumbs](https://github.com/kirang89/pycrumbs)

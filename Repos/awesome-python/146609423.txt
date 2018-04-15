@@ -1,0 +1,22 @@
+From f938c186080f4b40770f0bfb2955f2931011ca5e Mon Sep 17 00:00:00 2001
+From: nnikolic72 <nnenad@gmail.com>
+Date: Sat, 14 Oct 2017 18:10:28 +0200
+Subject: [PATCH] Added mypy and Static Type Checker section
+
+---
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/README.md b/README.md
+index 9ab5869e..2a0f49e7 100644
+--- a/README.md
++++ b/README.md
+@@ -240,6 +240,8 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+     * [Flake8](https://pypi.python.org/pypi/flake8) - The modular source code checker: pep8, pyflakes and co.
+     * [pylama](https://github.com/klen/pylama) - Code audit tool for Python and JavaScript.
+     * [Pylint](https://www.pylint.org/) - A Fully customizable source code analyzer.
++* Static Type Checker
++    * [mypy](http://mypy-lang.org/) - Check variable types during compile time.
+ 
+ ## Command-line Tools
+ 

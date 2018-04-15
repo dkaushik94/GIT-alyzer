@@ -1,0 +1,21 @@
+From 7a45582c12a1e07c2829b0a5d39d6e90a0f587d7 Mon Sep 17 00:00:00 2001
+From: Tom V <tom@viner.tv>
+Date: Thu, 1 Mar 2018 13:33:51 +0000
+Subject: [PATCH] Add Pyflame
+
+---
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/README.md b/README.md
+index ec0dc45d..bfab2cea 100644
+--- a/README.md
++++ b/README.md
+@@ -432,6 +432,7 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+ * Profiler
+     * [line_profiler](https://github.com/rkern/line_profiler) - Line-by-line profiling.
+     * [memory_profiler](https://github.com/fabianp/memory_profiler) - Monitor Memory usage of Python code.
++    * [Pyflame](https://github.com/uber/pyflame) - Attach this Ptracing Profiler to any processes running Python. Perfect for profiling production webservers.
+     * [profiling](https://github.com/what-studio/profiling) - An interactive Python profiler.
+     * [vprof](https://github.com/nvdv/vprof) - Visual Python profiler.
+ * Others

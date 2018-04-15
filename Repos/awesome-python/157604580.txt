@@ -1,0 +1,23 @@
+From 60ee330cc2346fd9292eaa93a54ee4c2c721f6cc Mon Sep 17 00:00:00 2001
+From: nnmalex <6181345+nnmalex@users.noreply.github.com>
+Date: Mon, 11 Dec 2017 16:09:26 +0000
+Subject: [PATCH] Update README.md
+
+Fixed link for pyparser
+---
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index 77a17d57..5c818e5b 100644
+--- a/README.md
++++ b/README.md
+@@ -1117,7 +1117,7 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+     * [phonenumbers](https://github.com/daviddrysdale/python-phonenumbers) - Parsing, formatting, storing and validating international phone numbers.
+     * [PLY](http://www.dabeaz.com/ply/) - Implementation of lex and yacc parsing tools for Python
+     * [Pygments](http://pygments.org/) - A generic syntax highlighter.
+-    * [pyparsing](https://session.wikispaces.com/1/auth/auth?authToken=04a694af95b643a06fcf5716ded01a5f3) - A general purpose framework for generating parsers.
++    * [pyparsing](http://pyparsing.wikispaces.com/) - A general purpose framework for generating parsers.
+     * [python-nameparser](https://github.com/derek73/python-nameparser) - Parsing human names into their individual components.
+     * [python-user-agents](https://github.com/selwin/python-user-agents) - Browser user agent parser.
+     * [sqlparse](https://github.com/andialbrecht/sqlparse) - A non-validating SQL parser.

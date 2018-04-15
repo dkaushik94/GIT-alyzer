@@ -1,0 +1,21 @@
+From a6c40482d72a3697a1df62e92683104b2daf88a1 Mon Sep 17 00:00:00 2001
+From: Ofir Arbel <ofir.arbel@gmail.com>
+Date: Sun, 7 Jan 2018 16:20:08 +0200
+Subject: [PATCH] Add apistar framework to web-framework section
+
+---
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/README.md b/README.md
+index e21fcb5f..e87b8bfc 100644
+--- a/README.md
++++ b/README.md
+@@ -1217,6 +1217,7 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+ * [TurboGears](http://www.turbogears.org/) - A microframework that can scale up to a full stack solution.
+ * [Web2py](http://www.web2py.com/) - Full-stack enterprise framework for secure database-driven web-based applications.
+     * [GitHub Web2py](https://github.com/web2py)
++* [API Star](https://github.com/encode/apistar) - A smart Web API framework, designed for Python 3.
+ 
+ ## WebSocket
+ 

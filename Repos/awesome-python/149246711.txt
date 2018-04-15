@@ -1,0 +1,21 @@
+From f65fbbb2b8e4bf59ad4f455b3cb0583e8aa4a82d Mon Sep 17 00:00:00 2001
+From: gtseres <panges@ceid.upatras.gr>
+Date: Fri, 27 Oct 2017 13:54:07 +0300
+Subject: [PATCH] Adding apistar in the REST APIs section
+
+---
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/README.md b/README.md
+index 2a0f49e7..e2057b19 100644
+--- a/README.md
++++ b/README.md
+@@ -932,6 +932,7 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+     * [restless](https://github.com/toastdriven/restless) - Framework agnostic REST framework based on lessons learned from Tastypie.
+     * [ripozo](https://github.com/vertical-knowledge/ripozo) - Quickly creating REST/HATEOAS/Hypermedia APIs.
+     * [sandman](https://github.com/jeffknupp/sandman) - Automated REST APIs for existing database-driven systems.
++    * [apistar](https://github.com/encode/apistar) - A smart Web API framework, designed for Python 3.
+ 
+ ## RPC Servers
+ 

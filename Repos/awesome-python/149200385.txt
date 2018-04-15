@@ -1,0 +1,21 @@
+From 06063a0c2589ac862731cc61d67a2a70004a44a0 Mon Sep 17 00:00:00 2001
+From: Alexander <nestorf250@gmail.com>
+Date: Fri, 27 Oct 2017 17:08:39 +0300
+Subject: [PATCH] Add deoplete-jedi as autocomplete source for vim
+
+---
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/README.md b/README.md
+index 2a0f49e7..eb50b1b6 100644
+--- a/README.md
++++ b/README.md
+@@ -514,6 +514,7 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+     * [SublimeJEDI](https://github.com/srusskih/SublimeJEDI) - A Sublime Text plugin to the awesome auto-complete library Jedi.
+ * Vim
+     * [Jedi-vim](https://github.com/davidhalter/jedi-vim) - Vim bindings for the Jedi auto-completion library for Python.
++    * [deoplete-jedi](deoplete-jedi) - Bindings for async auto-completion engine Deoplete for Jedi auto-completion library for Python
+     * [Python-mode](https://github.com/python-mode/python-mode) - An all in one plugin for turning Vim into a Python IDE.
+     * [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) - Includes [Jedi](https://github.com/davidhalter/jedi)-based completion engine for Python.
+ * Visual Studio

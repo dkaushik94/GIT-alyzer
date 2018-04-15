@@ -1,0 +1,22 @@
+From afd2802b39065088206f23bfec6bc43422e743c3 Mon Sep 17 00:00:00 2001
+From: night-crawler <lilo.panic@gmail.com>
+Date: Fri, 19 Jan 2018 12:16:30 +0300
+Subject: [PATCH] Added MonkeyType to 'Code Analysis and Linter'
+
+---
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/README.md b/README.md
+index e7a53aa6..2a77a15c 100644
+--- a/README.md
++++ b/README.md
+@@ -242,6 +242,8 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+     * [Pylint](https://www.pylint.org/) - A Fully customizable source code analyzer.
+ * Static Type Checker
+     * [mypy](http://mypy-lang.org/) - Check variable types during compile time.
++* Static Type Annotations Generators
++    * [MonkeyType](https://github.com/Instagram/MonkeyType) - A system for Python that generates static type annotations by collecting runtime types
+ 
+ ## Command-line Tools
+ 

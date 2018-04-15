@@ -1,0 +1,23 @@
+From c5254bfefab8e705884cfcf100143ef0a80964a8 Mon Sep 17 00:00:00 2001
+From: RajaRaviVarma <ravi.varma@cybrilla.com>
+Date: Tue, 2 Jan 2018 13:42:23 +0530
+Subject: [PATCH] Remove trailing whitespace
+
+* Removed trailing whitespace from one of the list entries.
+---
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index 98829781..e21fcb5f 100644
+--- a/README.md
++++ b/README.md
+@@ -443,7 +443,7 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+ * [MXNet](https://github.com/dmlc/mxnet) - A deep learning framework designed for both efficiency and flexibility.
+ * [Neupy](http://neupy.com/pages/home.html) - Running and testing different Artificial Neural Networks algorithms.
+ * [Pytorch](http://pytorch.org/) - Tensors and Dynamic neural networks in Python with strong GPU acceleration.
+-* [Serpent.AI](https://github.com/SerpentAI/SerpentAI) - Game agent framework. Use any video game as a deep learning sandbox. 
++* [Serpent.AI](https://github.com/SerpentAI/SerpentAI) - Game agent framework. Use any video game as a deep learning sandbox.
+ * [TensorFlow](https://github.com/tensorflow/tensorflow) - The most popular Deep Learning framework created by Google.
+ * [Theano](https://github.com/Theano/Theano) - A library for fast numerical computation.
+ 

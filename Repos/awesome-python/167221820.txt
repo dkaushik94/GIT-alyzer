@@ -1,0 +1,22 @@
+From 6904ffc7c2294bada218f84f7b6fac45134f0126 Mon Sep 17 00:00:00 2001
+From: Semen Zhydenko <simeon.zhidenko@gmail.com>
+Date: Mon, 5 Feb 2018 19:35:19 +0100
+Subject: [PATCH] complier -> compiler
+
+---
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index 30dd5348..3aff0371 100644
+--- a/README.md
++++ b/README.md
+@@ -706,7 +706,7 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+ * [IronPython](https://github.com/IronLanguages/ironpython3) - Implementation of the Python programming language written in C# targeting the .NET Framework and Mono.
+ * [Jython](https://hg.python.org/jython) - Implementation of Python programming language written in Java for the Java virtual machine (JVM).
+ * [MicroPython](https://github.com/micropython/micropython) - MicroPython - a lean and efficient Python programming language implementation for microcontrollers and constrained systems
+-* [Numba](http://numba.pydata.org/) - Python JIT complier to LLVM aimed at scientific Python.
++* [Numba](http://numba.pydata.org/) - Python JIT compiler to LLVM aimed at scientific Python.
+ * [PeachPy](https://github.com/Maratyszcza/PeachPy) - x86-64 assembler embedded in Python. Can be used as inline assembler for Python or as a stand-alone assembler for Windows, Linux, OS X, Native Client and Go.
+ * [Pyjion](https://github.com/Microsoft/Pyjion) - A JIT for Python based upon CoreCLR.
+ * [PyPy](https://bitbucket.org/pypy/pypy) - Implementation of the Python programming language written in RPython and translated into C. PyPy focuses on speed, efficiency and compatibility with the original CPython interpreter. The interpreter uses black magic to make Python very fast without having to add in additional type information.

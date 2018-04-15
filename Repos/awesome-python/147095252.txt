@@ -1,0 +1,21 @@
+From ca2f23e06f076d76fff3e496fb8eacb171dfe7be Mon Sep 17 00:00:00 2001
+From: Nicholas Brochu <info@nicholasbrochu.com>
+Date: Tue, 17 Oct 2017 12:26:13 -0400
+Subject: [PATCH] Added Serpent.AI
+
+---
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/README.md b/README.md
+index 2a0f49e7..3fc6fda3 100644
+--- a/README.md
++++ b/README.md
+@@ -441,6 +441,7 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+ * [MXNet](https://github.com/dmlc/mxnet) - A deep learning framework designed for both efficiency and flexibility.
+ * [Neupy](http://neupy.com/pages/home.html) - Running and testing different Artificial Neural Networks algorithms.
+ * [Pytorch](http://pytorch.org/) - Tensors and Dynamic neural networks in Python with strong GPU acceleration.
++* [Serpent.AI](https://github.com/SerpentAI/SerpentAI) - Game agent framework. Use any video game as a deep learning sandbox. 
+ * [TensorFlow](https://github.com/tensorflow/tensorflow) - The most popular Deep Learning framework created by Google.
+ * [Theano](https://github.com/Theano/Theano) - A library for fast numerical computation.
+ 

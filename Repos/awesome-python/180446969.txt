@@ -1,0 +1,22 @@
+From cfbf5723ac0f4378cdfcfdcc3e8d8d448b74ce41 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Favio=20Andr=C3=A9=20V=C3=A1zquez?=
+ <favio.vazquezp@gmail.com>
+Date: Mon, 9 Apr 2018 17:41:15 -0500
+Subject: [PATCH] Add Optimus to Data Analysis section
+
+---
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/README.md b/README.md
+index 5883f227..bfe784f9 100644
+--- a/README.md
++++ b/README.md
+@@ -342,6 +342,7 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+ * [Open Mining](https://github.com/mining/mining) - Business Intelligence (BI) in Pandas interface.
+ * [Orange](https://orange.biolab.si/) - Data mining, data visualization, analysis and machine learning through visual programming or scripts.
+ * [Pandas](http://pandas.pydata.org/) - A library providing high-performance, easy-to-use data structures and data analysis tools.
++* [Optimus](https://github.com/ironmussa/Optimus) - Cleansing, pre-processing, feature engineering, exploratory data analysis and easy Machine Learning with a PySpark backend. 
+ 
+ ## Data Validation
+ 

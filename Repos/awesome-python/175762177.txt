@@ -1,0 +1,21 @@
+From 7d2a98356cb9f46dbf844d288f7a7d716cf8cd44 Mon Sep 17 00:00:00 2001
+From: Stefane Fermigier <sf@fermigier.com>
+Date: Sun, 18 Mar 2018 18:14:23 +0100
+Subject: [PATCH] pipelinedb is not implemented in Python
+
+---
+ README.md | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index 538507b9..c35a8961 100644
+--- a/README.md
++++ b/README.md
+@@ -375,7 +375,6 @@ Inspired by [awesome-php](https://github.com/ziadoz/awesome-php).
+ *Databases implemented in Python.*
+ 
+ * [pickleDB](https://pythonhosted.org/pickleDB/) - A simple and lightweight key-value store for Python.
+-* [PipelineDB](https://www.pipelinedb.com/) - The Streaming SQL Database.
+ * [TinyDB](https://github.com/msiemens/tinydb) - A tiny, document-oriented database.
+ * [ZODB](http://www.zodb.org/en/latest/) - A native object database for Python. A key-value and object graph database.
+ 

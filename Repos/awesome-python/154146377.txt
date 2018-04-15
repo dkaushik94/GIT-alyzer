@@ -1,0 +1,32 @@
+From 0d3cdf6ef278060e71ae8679f53bb074486e0d3c Mon Sep 17 00:00:00 2001
+From: Ashish Gupta <gupta.ashish65901@gmail.com>
+Date: Wed, 22 Nov 2017 18:28:05 +0530
+Subject: [PATCH] Improved Podcasts info
+
+Improved Podcasts section and added list of podcasts.
+---
+ README.md | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/README.md b/README.md
+index 79c4daca..a491f656 100644
+--- a/README.md
++++ b/README.md
+@@ -1254,6 +1254,9 @@ Where to discover new Python libraries.
+ * [Podcast.init](https://podcastinit.com/)
+ * [Talk Python To Me](https://talkpython.fm/)
+ * [Python Bytes](https://pythonbytes.fm)
++* [Python Testing](http://pythontesting.net)
++* [Radio Free Python](http://radiofreepython.com/)
++* [From Python Import Podcast](http://frompythonimportpodcast.com/)
+ 
+ ## Twitter
+ 
+@@ -1301,6 +1304,7 @@ List of lists.
+     * [python-github-projects](https://github.com/checkcheckzz/python-github-projects)
+     * [python_reference](https://github.com/rasbt/python_reference)
+     * [pythonidae](https://github.com/svaksha/pythonidae)
++    * [Python Podcasts](https://www.cybrhome.com/topic/python-podcasts)
+ 
+ # Contributing
+ 
