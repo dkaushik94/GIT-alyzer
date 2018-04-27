@@ -20,10 +20,10 @@ The reports are *.svg* files and can be opened with a browser or any 3rd part ap
 ## Diagram:
 
 #### Control Flow Chart:
-![Flow Diagram](https://bitbucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/raw/0a1c895eaf61d6afe5a38d9de452eea573f50689/readme_images/analyzer_flow.svg)
+![Flow Diagram](./readme_images/analyzer_flow.svg)
 
 #### Example output graph after Frequency analysis on 15000 patch files:
-![Frequency analysis](https://bitbucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/raw/7d0f5c85485d305e67a7658ba89e9349c5732305/readme_images/graph.png)
+![Frequency analysis](./readme_images/graph.png)
 
 * * *
 
@@ -89,7 +89,7 @@ if    changed_LHS  (operator_change)    changed_RHS:
 
 For each repository, the frequency of each of the pattern is accumulated and plotted into a bar chart.
 
-![if_pattern_analysis](https://bitbucket.org/sjoshi37/sandeep_joshi_debojit_kaushik_hw2/raw/cfc83ef6ee77a265f44c813a88af7daa937432c7/readme_images/id_checker.png)
+![if_pattern_analysis](./readme_images/id_checker.png)
 
 
 ## Change Analysis
